@@ -8,7 +8,7 @@ import folium
 # import numpy as np
 # import pandas as pd
 
-app = dash.Dash(__name__)
+app = Dash(__name__)
 
 app.layout = html.Div([
     html.H6("Change the value in the text box to see callbacks in action!"),
