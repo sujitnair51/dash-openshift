@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 import dash
-# import dash_core_components as dcc
-# import dash_html_components as html
-# from dash.dependencies import Input, Output
-from dash import Dash, dcc, html, Input, Output
+import dash_core_components as dcc
+import dash_html_components as html
+from dash.dependencies import Input, Output
+# from dash import Dash, dcc, html, Input, Output
 import folium
 # import numpy as np
 # import pandas as pd
 
-app = Dash(__name__)
+app = dash.Dash(__name__)
 
 app.layout = html.Div([
     html.H6("Change the value in the text box to see callbacks in action!"),
