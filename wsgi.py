@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import dash
-import dash_core_components as dcc
-import dash_html_components as html
-from dash.dependencies import Input, Output
-#from dash import Dash, dcc, html, Input, Output
+# import dash_core_components as dcc
+# import dash_html_components as html
+# from dash.dependencies import Input, Output
+from dash import Dash, dcc, html, Input, Output
 import folium
 # import numpy as np
 # import pandas as pd
