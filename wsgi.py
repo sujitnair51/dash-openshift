@@ -12,21 +12,21 @@ app = Dash(__name__)
 application = app.server
 
 app.layout = html.Div([
-    html.H6("Change the value in the text box to see callbacks in action!"),
-    html.Div([
-        "Input: ",
-        dcc.Input(id='my-input', value='initial value', type='text')
-    ]),
+    html.H4("Map of Stations"),
+#     html.Div([
+#         "Input: ",
+#         dcc.Input(id='my-input', value='initial value', type='text')
+#     ]),
     html.Br(),
     html.Div(id='my-output'),
     html.Br(),
      html.Div([
-        "Input: ",
+        "Latitude: ",
         dcc.Input(id='lat', value=45.5236, type='text')
     ]),
     html.Br(),
      html.Div([
-        "Input: ",
+        "Longitude: ",
         dcc.Input(id='long', value=-122.6750, type='text')
     ]),
     html.Div(
