@@ -115,7 +115,8 @@ app = dash.Dash(
     __name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}],
 )
 app.title = "DO Optimization"
-server = app.server
+# server = app.server
+application = app.server
 
 # Create controls
 county_options = [
