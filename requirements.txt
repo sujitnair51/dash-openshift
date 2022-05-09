@@ -6,3 +6,4 @@ requests
 geopandas
 geopy
 folium
+vincent
