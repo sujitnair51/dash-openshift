@@ -256,32 +256,7 @@ app.layout = html.Div(
             ],
             className="row flex-display",
         ),
-#         html.Div(
-#             [
-#                 html.Div(
-#                     [dcc.Graph(id="main_graph")],
-#                     className="pretty_container seven columns",
-#                 ),
-#                 html.Div(
-#                     [dcc.Graph(id="individual_graph")],
-#                     className="pretty_container five columns",
-#                 ),
-#             ],
-#             className="row flex-display",
-#         ),
-#         html.Div(
-#             [
-#                 html.Div(
-#                     [dcc.Graph(id="pie_graph")],
-#                     className="pretty_container seven columns",
-#                 ),
-#                 html.Div(
-#                     [dcc.Graph(id="aggregate_graph")],
-#                     className="pretty_container five columns",
-#                 ),
-#             ],
-#             className="row flex-display",
-#         ),
+
     ],
     id="mainContainer",
     style={"display": "flex", "flex-direction": "column"},
