@@ -15,7 +15,7 @@ spec:
   - name: deployment-repo         #repo containing deploy assets.  Default can be specified in the defaults configmap
     value: 'https://github.ibm.com/Sujit-Nair/argocd-deployments.git'
   - name: deployment-repo-branch  #deployment repo git branch.  Defaults to 'master'
-    value: 'master'
+    value: 'main'
   - name: deployment-file         #full path to deployment file in deployment repo.  
     value: 'gitops/dev/deployment.yaml' 
   serviceAccountName: pipeline
