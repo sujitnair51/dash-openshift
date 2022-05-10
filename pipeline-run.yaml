@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: build-
+spec:
+  pipelineRef:
+    name: gitops-build
+  params:
+  - name: build-repo              #repo containing build assets and Dockerfile
+    value: ''
+  - name: build-repo-branch       #build repo git branch.  Defaults to 'master'
+    value: 'master'
+  - name: docker-file             #full path to Dockerfile in build repo.  Defaults to './Dockerfile'
+    value: './Dockerfile'
+  - name: deployment-repo         #repo containing deploy assets.  Default can be specified in the defaults configmap
+    value: ''
+  - name: deployment-repo-branch  #deployment repo git branch.  Defaults to 'master'
+    value: 'master'
+  - name: deployment-file         #full path to deployment file in deployment repo.  
+    value: 'gitops/dev/deployment.yaml' 
+  serviceAccountName: pipeline
+  timeout: 1h0m1s
