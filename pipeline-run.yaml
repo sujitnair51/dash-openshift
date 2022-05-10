@@ -7,7 +7,7 @@ spec:
     name: gitops-build
   params:
   - name: build-repo              #repo containing build assets and Dockerfile
-    value: ''
+    value: 'https://github.com/sujitnair51/dash-openshift.git'
   - name: build-repo-branch       #build repo git branch.  Defaults to 'master'
     value: 'master'
   - name: docker-file             #full path to Dockerfile in build repo.  Defaults to './Dockerfile'
