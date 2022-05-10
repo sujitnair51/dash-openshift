@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: PipelineRun
 metadata:
-  generateName: build-
+  generateName: dash-app-build
 spec:
   pipelineRef:
     name: gitops-build
@@ -13,7 +13,7 @@ spec:
   - name: docker-file             #full path to Dockerfile in build repo.  Defaults to './Dockerfile'
     value: './Dockerfile'
   - name: deployment-repo         #repo containing deploy assets.  Default can be specified in the defaults configmap
-    value: ''
+    value: 'https://github.ibm.com/Sujit-Nair/argocd-deployments.git'
   - name: deployment-repo-branch  #deployment repo git branch.  Defaults to 'master'
     value: 'master'
   - name: deployment-file         #full path to deployment file in deployment repo.  
