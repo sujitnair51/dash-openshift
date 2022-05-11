@@ -768,7 +768,7 @@ def generate_map(hr, province):
     ne = Location[['Latitude', 'Longitude']].max().values.tolist()
     m.fit_bounds([sw, ne]) 
     m.save("mymapnew.html")
-    return open('mymapnew.html', 'w+').read()
+    return open('mymapnew.html', 'r').read()
 
 @app.callback(
               Output(component_id='route-map', component_property='srcDoc'),
@@ -802,7 +802,7 @@ def generate_route_map(hr, province):
     ).add_to(m)
 
    m.save("mymapnew.html")
-   return open('mymapnew.html', 'w+').read()
+   return open('mymapnew.html', 'r').read()
 
 if __name__ == '__main__':
     app.run_server(debug=True,port=8080, host="0.0.0.0")
