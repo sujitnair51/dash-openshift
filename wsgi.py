@@ -15,6 +15,8 @@ import folium
 from folium import features
 import vincent
 from vincent import Bar
+import openrouteservice
+from openrouteservice import convert
 
 # Multi-dropdown options
 from controls import COUNTIES, WELL_STATUSES, WELL_TYPES, WELL_COLORS, PROVINCE, PRODUCT_TYPES
@@ -256,7 +258,17 @@ app.layout = html.Div(
             ],
             className="row flex-display",
         ),
+        html.Div(
+            [dcc.Loading(
+                id="loading-map2",
+                children=[html.Iframe(id='route-map', style={'width': '100%', 'height': '50vh', 'margin': "auto", "display": "block"})], type='circle')],
 
+            id="countGraphContainer2",
+            className="pretty_container",
+            # [dcc.Graph(id="count_graph")],
+            # id="countGraphContainer",
+            # className="pretty_container",
+        ),
     ],
     id="mainContainer",
     style={"display": "flex", "flex-direction": "column"},
@@ -758,6 +770,40 @@ def generate_map(hr, province):
     m.fit_bounds([sw, ne]) 
     m.save("mymapnew.html")
     return open('mymapnew.html', 'r').read()
+
+@app.callback(
+              Output(component_id='route-map', component_property='srcDoc'),
+              Input(component_id='hour_slider', component_property='value'),
+              Input(component_id='province', component_property='value'),
+)
+def generate_route_map(hr, province):
+   client = openrouteservice.Client(key='5b3ce3597851110001cf6248a68ca6687fe64109b956e946bb02b36b')
+
+   coords = ((80.21787585263182,6.025423265401452),(80.23990263756545,6.018498276842677))
+   res = client.directions(coords)
+   geometry = client.directions(coords)['routes'][0]['geometry']
+   decoded = convert.decode_polyline(geometry)
+
+   distance_txt = "<h4> <b>Distance :&nbsp" + "<strong>"+str(round(res['routes'][0]['summary']['distance']/1000,1))+" Km </strong>" +"</h4></b>"
+   duration_txt = "<h4> <b>Duration :&nbsp" + "<strong>"+str(round(res['routes'][0]['summary']['duration']/60,1))+" Mins. </strong>" +"</h4></b>"
+
+   m = folium.Map(location=[6.074834613830474, 80.25749815575348],zoom_start=10, control_scale=True,tiles="cartodbpositron")
+   folium.GeoJson(decoded).add_child(folium.Popup(distance_txt+duration_txt,max_width=300)).add_to(m)
+
+   folium.Marker(
+        location=list(coords[0][::-1]),
+        popup="Galle fort",
+        icon=folium.Icon(color="green"),
+    ).add_to(m)
+
+   folium.Marker(
+        location=list(coords[1][::-1]),
+        popup="Jungle beach",
+        icon=folium.Icon(color="red"),
+    ).add_to(m)
+
+   m.save("mymapnew.html")
+   return open('mymapnew.html', 'r').read()
 
 
 if __name__ == '__main__':
