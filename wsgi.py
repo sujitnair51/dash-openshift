@@ -752,8 +752,7 @@ def generate_map(hr, province):
         # popup = folium.Popup("Hello")
         
         if r["Province"] in province:
-#             print(hr, flush=True)
-#             print(hr[0], flush=True)
+
             if hr[0] <= r["RunOut"] <=hr[1]:
 #                 print(r, flush=True)
                 popup.add_child(v)
