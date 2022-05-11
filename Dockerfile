@@ -7,11 +7,11 @@ ENV APP_CONFIG="config.py"
 # Install Python dependencies.
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
-USER root
+
 # Copy the rest of the codebase into the image
 COPY . ./
-RUN chown -R 1001:0 .
-USER 1001
+RUN useradd -m appUser
+USER appUser
 
-# Finally, run gunicorn.
-CMD ["python", "./wsgi.py"]
+# Run locally on port 8050
+CMD gunicorn --bind 0.0.0.0:8050 wsgi:server
