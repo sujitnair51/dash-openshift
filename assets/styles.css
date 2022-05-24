@@ -141,3 +141,21 @@ body {
   pointer-events: all;
   transform: translate(30px, 349px);
 }
+
+.max-header {
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--bg-secondary);
+  color: var(--text-primary);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 3rem;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 6000;
+}
